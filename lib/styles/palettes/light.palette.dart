@@ -1,0 +1,36 @@
+part of '../styles.dart';
+
+final lightPalette = AppColors(
+  brightness: Brightness.light,
+  swatch: const MaterialColor(0xFF005FFF, {
+    50: Color(0xFF005FFF),
+    100: Color(0xFF005FFF),
+    200: Color(0xFF005FFF),
+    300: Color(0xFF005FFF),
+    400: Color(0xFF005FFF),
+    500: Color(0xFF005FFF),
+    600: Color(0xFF005FFF),
+    700: Color(0xFF005FFF),
+    800: Color(0xFF005FFF),
+    900: Color(0xFF005FFF),
+  }),
+  black: const Color(0xFF000000),
+  grey: const Color(0xFF7A7A7A),
+  greyGainsboro: const Color(0xFFDBDBDB),
+  greyWhisper: const Color(0xFFECEBEB),
+  whiteSmoke: const Color(0xFFF2F2F2),
+  whiteSnow: const Color(0xFFFCFCFC),
+  white: const Color(0xFFFFFFFF),
+  blueAlice: const Color(0xFFE9F2FF),
+  bgGradient: const LinearGradient(colors: [
+    Color(0xFFF7F7F7),
+    Color(0xFFFCFCFC),
+  ]),
+  overlay: const Color(0xFF000000).withOpacity(0.2),
+  overlayDark: const Color(0xFF000000).withOpacity(0.6),
+  buttonText: const Color(0xFFFFFFFF),
+  buttonBackground: const Color(0xFF005FFF),
+  accentBlue: const Color(0xFF005FFF),
+  accentRed: const Color(0xFFFF3742),
+  accentGreen: const Color(0xFF20E070),
+);
