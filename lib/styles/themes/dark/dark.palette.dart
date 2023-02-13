@@ -1,4 +1,4 @@
-part of '../styles.dart';
+part of '../../styles.dart';
 
 final darkPalette = AppColors(
   brightness: Brightness.dark,

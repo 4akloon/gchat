@@ -9,8 +9,6 @@ import 'app/app.controller.dart';
 import 'app/app.dart';
 import 'configs/local.config.dart';
 import 'configs/local_android.config.dart';
-import 'configs/prod.config.dart';
-import 'configs/test.config.dart';
 import 'core/config/config.core.dart';
 import 'core/connection/connection.core.dart';
 import 'core/db/db.core.dart';
@@ -41,8 +39,6 @@ Future<void> initServices(ConfigModel config) async {
   ConfigCore.initialize(config, availableConfigs: [
     localConfig,
     localAndroidConfig,
-    testConfig,
-    prodConfig,
   ]);
   await InfoCore.initialize();
   await ConnectionCore.initialize();

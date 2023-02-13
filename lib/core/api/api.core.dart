@@ -38,7 +38,6 @@ class ApiCore with Logger {
   static ApiCore get instance => Get.find<ApiCore>();
 
   Future<void> updateCore() async {
-    refreshEngine?.setReady();
     final dynamicHeaders = await _getDynamicHeaders();
     _dio.options.headers = {
       ...?defaultHeaders,

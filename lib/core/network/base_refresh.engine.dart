@@ -13,7 +13,7 @@ abstract class BaseRefreshEngine with Logger {
 
   Stream get statusStream => _status.stream;
 
-  void setReady() => _status(RefreshTokenStatus.ready);
+  void _setReady() => _status(RefreshTokenStatus.ready);
   void _setRefreshing() => _status(RefreshTokenStatus.refreshing);
 
   Future<void> refreshToken(
@@ -24,10 +24,10 @@ abstract class BaseRefreshEngine with Logger {
 
     final success = await sendRefresh();
     logger("Refresh token: - success: $success");
+    await update();
     _status(success ? RefreshTokenStatus.ready : RefreshTokenStatus.rotten);
     if (!success && onTokenRot != null) onTokenRot();
-
-    update();
+    _setReady();
   }
 
   Future<bool> sendRefresh();

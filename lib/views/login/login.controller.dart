@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gchat/app/app.controller.dart';
+import 'package:gchat/core/graphql/graph.core.dart';
 import 'package:gchat/models/auth/login.model.dart';
 import 'package:gchat/storage/app.storage.dart';
 import 'package:gchat/views/main/main.view.dart';
@@ -31,6 +32,7 @@ class LoginController extends GetxController {
       _storage.setAccessToken(response.accessToken);
       _storage.setRefreshToken(response.refreshToken);
       await AppController.instance.login(response.user);
+      await GraphCore.instance.updateCore();
       Get.offAllNamed(MainView.name);
     }
   }

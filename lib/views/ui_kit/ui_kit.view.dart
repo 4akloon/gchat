@@ -16,73 +16,84 @@ class UIKitView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Title')),
       body: ListView(
-        padding: const EdgeInsets.all(16),
         children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Hello'),
-          ),
-          const SizedBox(height: 16),
-          ChatMessageCard(
-            message: MessageModel(text: 'Message'),
-          ),
-          const SizedBox(height: 16),
-          ChatMessageCard(
-            message: MessageModel(text: 'Message'),
-            sender: MessageSenderType.isMe,
-          ),
-          const SizedBox(height: 16),
-          AppContextMenu(
-            actions: [
-              Material(
-                color: Colors.transparent,
-                child: AppContextMenuAction(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  leading: AppIcons.curve_line_left_up,
-                  child: const Text('Copy'),
-                ),
-              ),
-              AppContextMenuAction(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                leading: AppIcons.thread_reply,
-                child: const Text('Share  '),
-              ),
-              AppContextMenuAction(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                leading: AppIcons.delete,
-                isDestructiveAction: true,
-                child: const Text('Delete'),
+          ExpansionTile(
+            title: const Text('Buttons'),
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Hello'),
               ),
             ],
-            child: Material(
-              color: Colors.transparent,
-              child: ChatMessageCard(
-                message: MessageModel(
-                    text:
-                        '“Attractive people doing attractive things in attractive places” '),
-                sender: MessageSenderType.isNotMe,
+          ),
+          ExpansionTile(
+            title: const Text('Chat Bubles'),
+            children: [
+              ChatMessageCard(
+                message: MessageModel(text: 'Message'),
               ),
-            ),
+              const SizedBox(height: 16),
+              ChatMessageCard(
+                message: MessageModel(text: 'Message'),
+                sender: MessageSenderType.isMe,
+              ),
+              const SizedBox(height: 16),
+              AppContextMenu(
+                actions: [
+                  Material(
+                    color: Colors.transparent,
+                    child: AppContextMenuAction(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      leading: AppIcons.curve_line_left_up,
+                      child: const Text('Copy'),
+                    ),
+                  ),
+                  AppContextMenuAction(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    leading: AppIcons.thread_reply,
+                    child: const Text('Share  '),
+                  ),
+                  AppContextMenuAction(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    leading: AppIcons.delete,
+                    isDestructiveAction: true,
+                    child: const Text('Delete'),
+                  ),
+                ],
+                child: Material(
+                  color: Colors.transparent,
+                  child: ChatMessageCard(
+                    message: MessageModel(
+                        text:
+                            '“Attractive people doing attractive things in attractive places” '),
+                    sender: MessageSenderType.isNotMe,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          CapsuleTextInput(
-            controller: TextEditingController(),
-            hintText: 'Search',
-            prefixIcon: AppIcons.search,
+          ExpansionTile(
+            title: const Text('Inputs'),
+            children: [
+              CapsuleTextInput(
+                controller: TextEditingController(),
+                hintText: 'Search',
+                prefixIcon: AppIcons.search,
+              ),
+              const SizedBox(height: 16),
+              SquareTextInput(
+                controller: TextEditingController(),
+                labelText: 'Search',
+                onChange: (v) {},
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          SquareTextInput(
-            controller: TextEditingController(),
-            labelText: 'Search',
-            onChange: (v) {},
-          ),
-          const SizedBox(height: 16),
         ],
       ),
     );

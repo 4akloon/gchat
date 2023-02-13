@@ -43,7 +43,6 @@ class GraphCore with Logger {
   Future<void> updateCore() async {
     logger('Update core');
     final dynamicHeaders = await _getDynamicHeaders();
-    refreshEngine?.setReady();
     Link link = HttpLink(
       baseUrl,
       defaultHeaders: {
@@ -72,7 +71,7 @@ class GraphCore with Logger {
     bool isUnauthorized(QueryResult response) =>
         (response.exception?.graphqlErrors.isNotEmpty ?? false) &&
         response.exception!.graphqlErrors.first.extensions?['code'] ==
-            "Unauthorized";
+            "unauthorized";
 
     logger("Request: ${_getRequestName(options)}");
     if (!force && (refreshEngine?.refreshing ?? false)) {

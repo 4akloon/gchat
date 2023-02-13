@@ -18,7 +18,7 @@ class ContactRepository {
 
   Future<AppResponse<PaginatorModel<ContactModel>?>> contacts({
     int? page,
-    int? perPage,
+    int perPage = 10,
     String? text,
   }) async {
     final options = QueryOptions(

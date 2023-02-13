@@ -81,12 +81,15 @@ class AppController extends GetxController with Logger {
     await updateUser(user);
   }
 
-  Future<void> logout() async {
+  Future<void> logout({bool force = false}) async {
     logger("logout...");
-    await _authRepository.logout();
+    if (force) {
+      // Get.offAll(() => const AuthorizationView());
+    } else {
+      await _authRepository.logout();
+    }
     await StorageCore().clear();
     await DBCore().clear();
     await GraphCore.instance.updateCore();
-    // Get.offAll(() => const AuthorizationView());
   }
 }

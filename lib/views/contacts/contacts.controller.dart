@@ -16,7 +16,7 @@ class ContactsController extends GetxController {
     ContactDB? contactDB,
   })  : _contactRepository = contactRepository ?? ContactRepository(),
         _contactDB = contactDB ?? ContactDB() {
-    _contacts = _contactDB.contacts.obs;
+    _contacts = _contactDB.getContacts().obs;
   }
 
   late final RxList<ContactModel> _contacts;
@@ -42,7 +42,7 @@ class ContactsController extends GetxController {
       time: const Duration(milliseconds: 300),
     );
     ever(_contacts, (v) {
-      if (_text.isEmpty) _contactDB.setContacts(v);
+      if (_text.isEmpty) _contactDB.addContacts(v);
     });
     super.onInit();
   }

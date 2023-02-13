@@ -7,18 +7,12 @@ import '../core/db/db.core.dart';
 class ContactDB extends BaseDB {
   static ContactDB get instance => DBCore().getDataBase<ContactDB>();
 
-  List<ContactModel> get contacts {
-    final data = box.get('contacts');
-    if (data != null) {
-      try {
-        return List.from(data).map((e) => ContactModel.fromJson(e)).toList();
-      } catch (err) {}
-    }
-    return [];
-  }
+  List<ContactModel> getContacts() =>
+      box.values.map((e) => ContactModel.fromJson(e)).toList();
 
-  void setContacts(List<ContactModel> value) => box.put(
-        'contacts',
-        value.map((e) => e.toJson()).toList(),
+  Future<void> addContacts(List<ContactModel> value) => box.putAll(
+        value.asMap().map((_, value) => MapEntry(value.id, value.toJson())),
       );
+
+  Future<void> removeContact(String id) => box.delete(id);
 }
